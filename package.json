@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/OksanaNen/Cypress#readme",
   "devDependencies": {
-    "cypress": "^12.13.0"
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.13.0",
+    "install": "^0.13.0"
   }
 }
