@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "cy:dashboard": "npx cypress run --record --key 9d85102d-d568-44b5-8527-fa4f3c3ae582",
-    "cy:spec1": "npx cypress run --browser chrome --config video=false",
-    "cy:spec2": "npx cypress run --browser electron --config video=false",
-    "cy:parallel": "npm run cy:spec1 & npm run cy:spec2",
-    "cy:parallelkey": "npm run cy:parallel --record --key 9d85102d-d568-44b5-8527-fa4f3c3ae582"
+    "cy:chrome": "npx cypress run --browser chrome --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js'",
+    "cy:electron": "npx cypress run --browser electron --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js'",
+    "cy:parallel": "npm run cy:chrome -- --record --key 9d85102d-d568-44b5-8527-fa4f3c3ae582 & npm run cy:electron -- --record --key 9d85102d-d568-44b5-8527-fa4f3c3ae582"
   },
   "repository": {
     "type": "git",
