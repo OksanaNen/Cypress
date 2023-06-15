@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('clickButton', (selector) => {
+  cy.get(selector).click();
+})
+
+Cypress.Commands.add('checkUrl', (urlCheck) => {
+  cy.url().should('be.equal', urlCheck); 
+})
+
+Cypress.Commands.add('checkVisible', (select) => {
+  cy.get(select).should('be.visible');
+})
