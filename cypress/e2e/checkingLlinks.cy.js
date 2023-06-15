@@ -21,7 +21,7 @@ describe('Checking links on the user page after login', () => {
     cy.get('.btn-main').click();
   });
   
-  it('Сheck link - Boxes', () => {
+  it('Check link - Boxes', () => {
     cy.get('.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account/boxes"]')
       .click();
     cy.url().should('be.equal',`${baseUrl}/account/boxes`); 
@@ -41,7 +41,7 @@ describe('Checking links on the user page after login', () => {
   });
   
   it('Check link - Account', () => {
-    cy.get('.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account"]').click();
+    cy.clickButton('.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account"]');
     cy.url().should('be.equal',`${baseUrl}/account`);
     cy.get('#account_profile_settings').should('be.visible');
   });  
