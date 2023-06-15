@@ -4,6 +4,8 @@
   "description": "Cypress project #1",
   "main": "index.js",
   "scripts": {
+    "cy:production": "npx cypress run --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js' --config-file cypress.config.js",
+    "cy:staging": "npx cypress run --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js' --config-file cypress.staging.config.js",
     "cy:dashboard": "npx cypress run --record --key 9d85102d-d568-44b5-8527-fa4f3c3ae582",
     "cy:chrome": "npx cypress run --browser chrome --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js'",
     "cy:electron": "npx cypress run --browser electron --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js'",
