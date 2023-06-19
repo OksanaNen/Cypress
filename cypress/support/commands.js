@@ -35,3 +35,15 @@ Cypress.Commands.add('checkUrl', (urlCheck) => {
 Cypress.Commands.add('checkVisible', (select) => {
   cy.get(select).should('be.visible');
 })
+
+Cypress.Commands.add('username', (selector, userName) => {
+  cy.get(selector).type(userName);
+});
+
+Cypress.Commands.add('email', (selector, eMail) => {
+  cy.get(selector).type(eMail);
+});
+
+Cypress.Commands.add('password', (selector, passWord) => {
+  cy.get(selector).type(passWord);
+});
