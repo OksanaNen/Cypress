@@ -30,5 +30,5 @@ jobs:
         run: npm i
         
       - name: Cypress
-        run: npx cypress run --browser chrome --config video=false --spec 'cypress/e2e/checkingLlinks.cy.js'
+        run: npx cypress run --config video=false --spec 'cypress/e2e/checkingLlinks2.cy.js'
 
