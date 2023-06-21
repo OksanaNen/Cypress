@@ -54,3 +54,7 @@ Cypress.Commands.add('changePassword', (newPassword) => {
   cy.get(':nth-child(4) > .form-page-group__main > .layout-column-start > :nth-child(2) > .frm').type(newPassword);
   cy.get('.layout-row-end > .btn-service').click();
 });
+
+Cypress.Commands.add('shouldExist', (selector) => {
+  cy.contains(selector).should("exist");
+})
