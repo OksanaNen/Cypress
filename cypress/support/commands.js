@@ -47,3 +47,10 @@ Cypress.Commands.add('email', (selector, eMail) => {
 Cypress.Commands.add('password', (selector, passWord) => {
   cy.get(selector).type(passWord);
 });
+
+Cypress.Commands.add('changePassword', (newPassword) => {
+  cy.get('.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account"]').click();
+  cy.get('.layout-column-start > :nth-child(1) > .frm').type(newPassword);
+  cy.get(':nth-child(4) > .form-page-group__main > .layout-column-start > :nth-child(2) > .frm').type(newPassword);
+  cy.get('.layout-row-end > .btn-service').click();
+});
