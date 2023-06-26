@@ -58,3 +58,71 @@ Cypress.Commands.add('changePassword', (newPassword) => {
 Cypress.Commands.add('shouldExist', (selector) => {
   cy.contains(selector).should("exist");
 })
+
+Cypress.Commands.add('requestChangePassword', (pass) => {
+  cy.request({
+    method: "PUT",
+    headers: { 
+      Cookie: "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjg5OTk2Mjk5fQ.s8798J-2NfyF1qvzNjR48u7nStrj_aAYEiZt26yHrz0; refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjkyNTg4Mjk5fQ.vqhBFxYf6_Z2NxfOAUy4etrphOt_H8DCGg4nw082JnQ"
+    },
+    url: "https://santa-secret.ru/api/account/password",
+    body: {
+      password: pass
+    }
+  }).then ((response) => {
+    expect(response.status).to.equal(200);
+  });
+});
+
+
+Cypress.Commands.add('LoginToSecretSanta', () => {
+  cy.request({
+    method: "POST",
+    headers: { 
+      Cookie: "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjg5OTk2Mjk5fQ.s8798J-2NfyF1qvzNjR48u7nStrj_aAYEiZt26yHrz0; refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjkyNTg4Mjk5fQ.vqhBFxYf6_Z2NxfOAUy4etrphOt_H8DCGg4nw082JnQ"
+    },
+    url: "https://santa-secret.ru/api/login?redirect=%2F",
+    body: {
+      email: "deminaon@gmail.com",
+      password: "_gqd2m69"
+   }
+  }).then ((response) => {
+    expect(response.status).to.equal(200);
+ });
+});
+
+
+Cypress.Commands.add('CreateNewBox', (newName, newKey) => {
+  cy.request({
+    method: "POST",
+    headers: { 
+      Cookie: "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjg5OTk2Mjk5fQ.s8798J-2NfyF1qvzNjR48u7nStrj_aAYEiZt26yHrz0; refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQ5NTU2ODcsImlhdCI6MTY4NzQwNDI5OSwiZXhwIjoxNjkyNTg4Mjk5fQ.vqhBFxYf6_Z2NxfOAUy4etrphOt_H8DCGg4nw082JnQ"
+    },
+    url: "https://santa-secret.ru/api/box",
+    body: {
+      email: null,
+      name: newName,
+      key: newKey,
+      picture: "cookie_star",
+      usePost: false,
+      useCashLimit: null,
+      cashLimit: null,
+      cashLimitCurrency: null,
+      useWish: false,
+      useCircleDraw: null,
+      isInviteAfterDraw: null,
+      isArchived: null,
+      createAdminCard: null,
+      isCreated: true,
+      useNames: false,
+      isPhoneRequired: false,
+      logo: null
+  }
+  }).then ((response) => {
+    cy.log('Here');
+    expect(response.status).to.equal(200);
+    expect(response.body.box.name).to.equal(newName);
+    expect(response.body.box.key).to.equal(newKey);
+ });
+
+})
